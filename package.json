@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node main.js",
+    "test": "nodemon --exec babel-node test.js",
     "dev": "npm install && nodemon --exec babel-node main.js",
     "watch": "cd client && npm run build && cd .. && cp -a client/build/. server/client && npm run dev",
     "client": "cd client && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build"
   },
   "dependencies": {
+    "uuid": "^3.3.2",
     "redis": "^2.8.0",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",

@@ -1,6 +1,7 @@
 import express from "express"
 import path from "path"
 import apiRoutes from "./api"
+import { onScrape } from "../controllers/scrape"
 
 const router = new express.Router()
 
