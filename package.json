@@ -4,27 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon --exec babel-node main.js",
-    "dev": "nodemon --exec babel-node main.js",
+    "start": "nodemon --exec babel-node main.js",
+    "dev": "npm install && nodemon --exec babel-node main.js",
     "watch": "cd client && npm run build && cd .. && cp -a client/build/. server/client && npm run dev",
     "client": "cd client && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2",
-    "htmlparser2": "^3.10.1",
-    "nodemon": "^1.18.10",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "@babel/core": "^7.3.3",
-    "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-es2017": "^7.0.0-beta.53",
-    "@babel/preset-typescript": "^7.3.3"
-  },
-  "devDependencies": {
+    "redis": "^2.8.0",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "htmlparser2": "^3.10.1",
