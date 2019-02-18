@@ -6,8 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node main.js",
     "test": "nodemon --exec babel-node test.js",
-    "dev": "npm install && nodemon --exec babel-node main.js",
-    "watch": "cd client && npm run build && cd .. && cp -a client/build/. server/client && npm run dev",
+    "dev": "nodemon --exec babel-node main.js",
+    "watch": "cd client && npm run build && cd .. && npm run dev",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build"
   },
