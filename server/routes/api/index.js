@@ -4,8 +4,13 @@ import { getCurrentContent } from "../../controllers/scrapedData"
 
 router.get("/current", function (req, res) {
    getCurrentContent().then(function (reply) {
-      res.json(reply.content)
+      // console.log(`Content: ${reply.content}`)
+      res.json(JSON.parse(reply.content))
    })
+})
+
+router.get("/saved", function (req, res) {
+   
 })
 
 

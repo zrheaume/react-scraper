@@ -21,13 +21,20 @@ async function retrieveContent() {
          let $ = await fetchTarget()
          console.log("Doc fetched. Attempting to map")
          let results = []
-         $("#main").find("ol").children(".expanded").each((i, elem) => {
+         $("#main").find("ol").children(".expanded").each((i, searchResult) => {
             // console.log(i)
             let item = {}
-            item.type = $(elem).find(".visualIndicator").text().toLowerCase()
-            item.link = $(elem).find(".result-heading").children("a").attr("href")
-            item.name = $(elem).find(".result-heading").children("a").text()
-            item.desc = $(elem).find(".result-title").text()
+            item.type = $(searchResult).find(".visualIndicator").text().trim().toLowerCase()
+            item.link = $(searchResult).find(".result-heading").children("a").attr("href").trim()
+            item.name = $(searchResult).find(".result-heading").children("a").text().trim()
+            item.desc = $(searchResult).find(".result-title").text().trim()
+            let testResults = $(searchResult).find(".result-item")
+               .each((i, subheading) => {
+                  if ($(subheading).find("strong").text().trim() === "Committees:") {
+                     item.committees = $(subheading).text().trim().split(": ")[1]
+                  }
+               })
+
             results.push(item)
          })
          console.log("Doc mapped. Returning to previous task")

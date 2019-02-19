@@ -1,14 +1,15 @@
 import express from "express"
-import http from "http"
 import scraperCacheInit from "./utils/prepEnv"
+import logger from "morgan"
 
 const app = express()
-const server = http.createServer(app)
 import configMiddleware from "./config/middleware"
+
 configMiddleware(app)
+app.use(logger("combined"))
 
 async function setListener(PORT) {
-   server.listen(PORT, (err) => {
+   app.listen(PORT, (err) => {
       if (err) {
          console.log(err)
          return Promise.reject(err)
@@ -21,11 +22,9 @@ async function setListener(PORT) {
 
 async function server_init(PORT) {
    try {
-      scraperCacheInit().then((after) => {
-         console.log(after)
-         setListener(PORT).then((listening) => {
-            if (listening) return Promise.resolve(PORT)
-         })
+      let cacheStartedGood = scraperCacheInit()
+      setListener(PORT).then((listening) => {
+         if (listening && cacheStartedGood) return Promise.resolve(PORT)
       })
    } catch (err) {
       throw err
@@ -33,6 +32,5 @@ async function server_init(PORT) {
 }
 
 export {
-   server,
    server_init
 }
