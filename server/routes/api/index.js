@@ -14,7 +14,8 @@ router.get("/saved", function (req, res) {
    items.fetchAll().then((allItems) => {
       res.json(allItems)
    })
-}).post(function (req, res) {
+})
+router.post("/saved", function (req, res) {
    let toSave = req.body
    items.save(toSave).then((status) => {
       res.send(status)
