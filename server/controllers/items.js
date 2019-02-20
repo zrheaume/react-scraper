@@ -2,6 +2,7 @@ import * as db from "../models/db"
 import connect from "../config/mongo"
 
 connect()
+
 async function save(newItem) {
    return new Promise(async function (resolve, reject) {
       try {
@@ -12,6 +13,13 @@ async function save(newItem) {
       }
    })
 }
+
+async function remove( itemRef ) {
+   return new Promise(async function (resolve, reject) {
+      
+   })
+}
+
 async function fetchAll() {
    return new Promise(async function (resolve, reject) {
       try {
