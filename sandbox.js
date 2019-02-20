@@ -4,14 +4,29 @@
 //    let scrape = results
 //    console.log(scrape)
 // })
-import mongoose from "mongoose"
+import connect from "./server/config/mongo"
 import * as db from "./server/models/db"
 
-db.Item.create({
-   type: "test",
-   desc : "A test entry"
+// connect().then((goose) => {
+//    // console.log(goose.connections[0].collections)
+//    db.Item.create({
+//       type: "test",
+//       desc: "A test entry"
+//    }).then((res) => {
+//       console.log(res)
+//    }).catch((err) => {
+//       console.log(err)
+//    })
+// })
+
+import item from "./server/controllers/item"
+
+item.save({
+   name: 'H.R.1308',
+   type: 'bill',
+   desc: 'To amend the Federal Election Campaign Act of 1971 to provide for a limitation on the time for the use of contributions or donations, and for other purposes.',
+   committees: 'House - House Administration',
+   saved: false
 }).then((res) => {
    console.log(res)
-}).catch((err) => {
-   console.log(err)
 })

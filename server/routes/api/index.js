@@ -1,6 +1,7 @@
 import express from "express"
 const router = express.Router()
 import { getCurrentContent } from "../../controllers/scrapedData"
+import items from "../../controllers/items"
 
 router.get("/current", function (req, res) {
    getCurrentContent().then(function (reply) {
@@ -10,7 +11,14 @@ router.get("/current", function (req, res) {
 })
 
 router.get("/saved", function (req, res) {
-   
+   items.fetchAll().then((allItems) => {
+      res.json(allItems)
+   })
+}).post(function (req, res) {
+   let toSave = req.body
+   items.save(toSave).then((status) => {
+      res.send(status)
+   })
 })
 
 
