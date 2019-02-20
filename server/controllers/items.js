@@ -14,9 +14,14 @@ async function save(newItem) {
    })
 }
 
-async function remove( itemRef ) {
+async function remove( itemID ) {
    return new Promise(async function (resolve, reject) {
-      
+      try {
+         let status = await db.Item.findById(itemID).remove()
+         return resolve(status.ok)
+      } catch (err) {
+         return reject(err)
+      }
    })
 }
 
@@ -33,5 +38,6 @@ async function fetchAll() {
 
 export default {
    save,
+   remove,
    fetchAll
 }

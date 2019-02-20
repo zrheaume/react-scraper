@@ -21,8 +21,15 @@ router.post("/saved", function (req, res) {
       res.send(status)
    })
 })
-router.delete("/saved", function (req, res) {
-   let itemRef = req.body
+router.delete("/saved/:id", function (req, res) {
+   let itemID = req.params.id
+   items.remove(itemID).then((ok) => {
+      if (ok) {
+         res.json({ rem: true})
+      } else {
+         res.json({rem: false, err : "Could not remove object with specified id"})
+      }
+   })
 
 })
 

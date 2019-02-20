@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node main.js",
     "dev": "nodemon --exec babel-node sandbox.js",
-    "watch": "cd client && npm run build && cd .. && nodemon --exec --verbose babel-node main.js",
+    "watch": "cd client && npm run build && cd .. && nodemon --verbose --exec babel-node main.js",
     "client": "cd client && npm run start",
     "build": "cd client && npm run build"
   },

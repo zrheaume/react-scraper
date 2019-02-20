@@ -19,14 +19,4 @@ import * as db from "./server/models/db"
 //    })
 // })
 
-import item from "./server/controllers/item"
-
-item.save({
-   name: 'H.R.1308',
-   type: 'bill',
-   desc: 'To amend the Federal Election Campaign Act of 1971 to provide for a limitation on the time for the use of contributions or donations, and for other purposes.',
-   committees: 'House - House Administration',
-   saved: false
-}).then((res) => {
-   console.log(res)
-})
+import item from "./server/controllers/items"
